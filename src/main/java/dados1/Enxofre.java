@@ -1,12 +1,12 @@
-package tabelaTeores;
+package dados1;
 
-public class Magnesio   {
+public class Enxofre {
 
-    private double ValorIdeal = 1.5;
+    private double ValorIdeal = 9.0;
     private int Valor;
     private int ValorCorrigido;
 
-    public Magnesio(int valor) {
+    public Enxofre(int valor) {
         Valor = valor;
     }
 
@@ -22,7 +22,7 @@ public class Magnesio   {
         return ValorCorrigido;
     }
 
-    public void CalculaCorrecaoMagnesio() {
+    public void CalculaCorrecaoEnxofre() {
 
     }
 

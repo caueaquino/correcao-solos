@@ -1,4 +1,4 @@
-package tabelaTeores;
+package dados1;
 
 public class Fosforo {
 

@@ -1,4 +1,4 @@
-import tabelaTeores.Aluminio;
+import dados1.Aluminio;
 
 public class Principal {
 

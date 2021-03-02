@@ -1,4 +1,4 @@
-package tabelaTeores;
+package dados1;
 
 public class Potassio {
 
@@ -52,7 +52,7 @@ public class Potassio {
         }
     }
 
-    public void CalculaValorAposCorrecao() {
+    public void calculaValorAposCorrecao() {
         double valorCalculoAuxiliar = (Valor * ParticipacaoCTCDesejada / ParticipacaoCTCAtual) - Valor;
         if (Valor > 0.5 || valorCalculoAuxiliar < 0.01) {
             ValorAposCorrecao = Valor;
