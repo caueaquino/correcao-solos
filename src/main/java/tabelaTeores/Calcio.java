@@ -2,9 +2,9 @@ package tabelaTeores;
 
 public class Calcio {
 
-    private double ValorIdeal = 6.0;
-    private int Valor;
-    private int ValorCorrigido;
+    private double ValorIdeal;
+    private double Valor;
+    private double ValorCorrigido;
 
     public Calcio(int valor) {
         Valor = valor;
@@ -14,11 +14,11 @@ public class Calcio {
         return ValorIdeal;
     }
 
-    public int getValor() {
+    public double getValor() {
         return Valor;
     }
 
-    public int getValorCorrigido() {
+    public double getValorCorrigido() {
         return ValorCorrigido;
     }
 
