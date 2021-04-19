@@ -1,6 +1,9 @@
 package dados1;
 
+import enums.EFonteCorretivoCalcioMagnesio;
+import enums.EFonteFosforo;
 import enums.ETexturaSolo;
+
 
 public class Calcio {
 
@@ -8,8 +11,8 @@ public class Calcio {
     private double ValorIdeal;
     private double ValorAposCorrecao;
     private double TeorCaOCorretivo;
-    private int FonteCorretivo;
-    private int FonteFosforoUtilizar;
+    private EFonteCorretivoCalcioMagnesio FonteCorretivo;
+    private EFonteFosforo FonteFosforoUtilizar;
     private double ParticipacaoCalcioCTCAtual;
     private double ParticipacaoCalcioCTCDesejada;
     private double ValorHAL;
@@ -19,9 +22,9 @@ public class Calcio {
     private double EficienciaFosforo;
     private double TeorFosforoAtingir;
     private ETexturaSolo ValorTexturaDoSolo;
-
-    public Calcio() { }
-
+    private EFonteFosforo EFonteFosforo;
+    private enums.EFonteCorretivoCalcioMagnesio EFonteCorretivoCalcioMagnesio;
+  
     public double calculaValorIdeal() {
         switch (this.ValorTexturaDoSolo) {
 
@@ -79,40 +82,40 @@ public class Calcio {
 
     private double calculoAuxiliar2(double valorAuxiliar) {
         switch (this.FonteFosforoUtilizar) {
-            case 1:
+            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 2:
+            case DAP_FONTE_FOSFORO:
                 return valorAuxiliar * 0.2;
 
-            case 3:
+            case FOSFATO_GAFSA_FONTE_FOSFORO:
                 return valorAuxiliar * 0.09;
 
-            case 4:
+            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
                 return valorAuxiliar * 0.16;
 
-            case 5:
+            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 6:
+            case YOORIN_FONTE_FOSFORO:
                 return valorAuxiliar * 0.52;
 
-            case 7:
+            case FOSFATO_DAOUI_FONTE_FOSFORO:
                 return valorAuxiliar * 0.52;
 
-            case 8:
+            case ACIDO_FOSFORICO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.45;
 
-            case 9:
+            case MAP_FONTE_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 10:
+            case FOSFATO_ARAD_FONTE_FOSFORO:
                 return valorAuxiliar * 0.44;
 
-            case 11:
+            case FOSFATO_PATO_MINAS_FONTE_FOSFORO:
                 return valorAuxiliar * 0;
 
-            case 12:
+            case MULTIFOSFATO_MAGNESIANO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.18;
 
             default:
@@ -123,22 +126,22 @@ public class Calcio {
 
     private double calculaCorretivos() {
         switch (this.FonteCorretivo) {
-            case 1:
+            case CALCARIO_DOLOMITICO_FONTE_CALCIO_MAGNESIO:
                 return 30.4;
 
-            case 2:
+            case CALCARIO_CALCITICO_FONTE_CALCIO_MAGNESIO:
                 return 56;
 
-            case 3:
+            case CALCARIO_DE_CONCHA_FONTE_CALCIO_MAGNESIO:
                 return 54;
 
-            case 4:
+            case GESSO_AGRICOLA_FONTE_CALCIO_MAGNESIO:
                 return 29;
 
-            case 5:
+            case HIDROXIDO_CALCIO_FONTE_CALCIO_MAGNESIO:
                 return 75.7;
 
-            case 6:
+            case CALCARIO_MAGNESIANO_FONTE_CALCIO_MAGNESIO:
                 return 35;
 
             default:
@@ -148,34 +151,34 @@ public class Calcio {
 
     private double calculaKgAlqueire() {
         switch (this.FonteFosforoUtilizar) {
-            case 1:
+            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
                 return 18;
 
-            case 2:
+            case DAP_FONTE_FOSFORO:
                 return 41;
 
-            case 3:
+            case FOSFATO_GAFSA_FONTE_FOSFORO:
                 return 48;
 
-            case 4:
+            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
                 return 45;
 
-            case 5:
+            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
                 return 18;
 
-            case 6:
+            case YOORIN_FONTE_FOSFORO:
                 return 33;
 
-            case 7:
+            case FOSFATO_DAOUI_FONTE_FOSFORO:
                 return 29;
 
-            case 8:
+            case ACIDO_FOSFORICO_FONTE_FOSFORO:
                 return 32;
 
-            case 9:
+            case MAP_FONTE_FOSFORO:
                 return 24;
 
-            case 10:
+            case FOSFATO_ARAD_FONTE_FOSFORO:
                 return 18.5;
 
             default:

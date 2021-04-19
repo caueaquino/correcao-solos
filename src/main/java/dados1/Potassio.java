@@ -1,5 +1,7 @@
 package dados1;
 
+import enums.ETexturaSolo;
+
 public class Potassio {
 
     private double Valor;
@@ -7,14 +9,15 @@ public class Potassio {
     private double ValorAposCorrecao;
     private double ParticipacaoCTCAtual;
     private double ParticipacaoCTCDesejada;
+    private ETexturaSolo ValorTexturaDoSolo;
 
-    public double calculaValorIdeal(int texturaSolo) {
+    public double calculaValorIdeal(ETexturaSolo texturaSolo) {
         switch (texturaSolo) {
-            case 1:
+            case SOLO_ARGILOSO:
                 this.ValorIdeal = 0.35;
                 break;
 
-            case 2:
+            case SOLO_TEXTURA_MEDIA:
                 this.ValorIdeal = 0.25;
                 break;
 

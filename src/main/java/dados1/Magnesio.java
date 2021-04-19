@@ -1,5 +1,6 @@
 package dados1;
 
+import enums.EFonteFosforo;
 import enums.ETexturaSolo;
 
 public class Magnesio   {
@@ -10,7 +11,9 @@ public class Magnesio   {
     private ETexturaSolo ValorTexturaSolo;
     private double ValorCelulaD23Planilha;
     private int FonteDeCorretivoParaUsar;
-    private int FonteDeFosforoParaUtilizar;
+    private EFonteFosforo FonteDeFosforoParaUtilizar;
+    private EFonteFosforo EFonteFosforo;
+
 
     public double calculaValorIdealMagnesio() {
         switch (this.ValorTexturaSolo) {
@@ -72,7 +75,7 @@ public class Magnesio   {
 
     //N70
     private double calculoCelulaN70() {
-        if (this.FonteDeFosforoParaUtilizar == 5) {
+        if (this.FonteDeFosforoParaUtilizar == this.EFonteFosforo.SUPERFOSFATO_TRIPLO_FONTE_FOSFORO) {
             return 0.0248 * 15;
         }
         return 0;
