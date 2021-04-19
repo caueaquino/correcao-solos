@@ -24,7 +24,7 @@ public class Calcio {
     private ETexturaSolo ValorTexturaDoSolo;
     private EFonteFosforo EFonteFosforo;
     private enums.EFonteCorretivoCalcioMagnesio EFonteCorretivoCalcioMagnesio;
-
+  
     public double calculaValorIdeal() {
         switch (this.ValorTexturaDoSolo) {
 

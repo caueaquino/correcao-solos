@@ -14,6 +14,7 @@ public class Magnesio   {
     private EFonteFosforo FonteDeFosforoParaUtilizar;
     private EFonteFosforo EFonteFosforo;
 
+
     public double calculaValorIdealMagnesio() {
         switch (this.ValorTexturaSolo) {
             case SOLO_ARGILOSO:
