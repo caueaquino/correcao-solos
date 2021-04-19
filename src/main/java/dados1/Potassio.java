@@ -8,61 +8,34 @@ public class Potassio {
     private double ParticipacaoCTCAtual;
     private double ParticipacaoCTCDesejada;
 
-    public Potassio() { }
-
-    public double getValorIdeal() {
-        return ValorIdeal;
-    }
-
-    public double getValor() {
-        return Valor;
-    }
-
-    public double getValorCorrigido() {
-        return ValorAposCorrecao;
-    }
-
-    public void setValor(double valor) {
-        Valor = valor;
-    }
-
-    public void setParticipacaoCTCAtual(double participacaoCTCAtual) {
-        ParticipacaoCTCAtual = participacaoCTCAtual;
-    }
-
-    public void setParticipacaoCTCDesejada(double participacaoCTCDesejada) {
-        ParticipacaoCTCDesejada = participacaoCTCDesejada;
-    }
-
-    public void calculaValorIdeal(int texturaSolo) {
+    public double calculaValorIdeal(int texturaSolo) {
         switch (texturaSolo) {
-
             case 1:
-                ValorIdeal = 0.35;
+                this.ValorIdeal = 0.35;
                 break;
 
             case 2:
-                ValorIdeal = 0.25;
+                this.ValorIdeal = 0.25;
                 break;
 
             default:
-                ValorIdeal = 0;
+                this.ValorIdeal = 0;
                 break;
 
         }
+        return this.ValorIdeal;
     }
 
-    public void calculaValorAposCorrecao() {
-        double valorCalculoAuxiliar = (Valor * ParticipacaoCTCDesejada / ParticipacaoCTCAtual) - Valor;
-        if (Valor > 0.5 || valorCalculoAuxiliar < 0.01) {
-            ValorAposCorrecao = Valor;
-            return;
+    public double calculaValorAposCorrecao() {
+        double valorCalculoAuxiliar = (this.Valor * this.ParticipacaoCTCDesejada / this.ParticipacaoCTCAtual) - this.Valor;
+        if (this.Valor > 0.5 || valorCalculoAuxiliar < 0.01) {
+            this.ValorAposCorrecao = this.Valor;
+        } else if (valorCalculoAuxiliar > 0.01) {
+            this.ValorAposCorrecao = (this.Valor + valorCalculoAuxiliar);
+        } else {
+            this.ValorAposCorrecao = 0;
         }
-        if (valorCalculoAuxiliar > 0.01) {
-            ValorAposCorrecao = (Valor + valorCalculoAuxiliar);
-            return;
-        }
-        ValorAposCorrecao = 0;
+        return ValorAposCorrecao;
     }
 
 }

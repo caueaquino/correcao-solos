@@ -1,58 +1,40 @@
 package dados1;
 
+import enums.ETexturaSolo;
+
 public class Fosforo {
 
     private double Valor;
-    private double ValorAposCorrecao;
     private double ValorIdeal;
+    private double ValorAposCorrecao;
     private double ValorParaAtingir;
+    private ETexturaSolo ValorTexturaDoSolo;
 
-    public Fosforo() { }
+    public double calculaValorIdeal(int texturaSolo) {
+        switch (this.ValorTexturaDoSolo) {
 
-    public double getValor() {
-        return Valor;
-    }
-
-    public double getValorAposCorrecao() {
-        return ValorAposCorrecao;
-    }
-
-    public double getValorIdeal() {
-        return ValorIdeal;
-    }
-
-    public void setValor(double valor) {
-        Valor = valor;
-    }
-
-    public void setValorParaAtingir(double valorParaAtingir) {
-        ValorParaAtingir = valorParaAtingir;
-    }
-
-    public void calculaValorIdeal(int texturaSolo) {
-        switch (texturaSolo) {
-
-            case 1:
-                ValorIdeal = 9;
+            case SOLO_ARGILOSO:
+                this.ValorIdeal = 9;
                 break;
 
-            case 2:
-                ValorIdeal = 12;
+            case SOLO_TEXTURA_MEDIA:
+                this.ValorIdeal = 12;
                 break;
 
             default:
-                ValorIdeal = 0;
+                this.ValorIdeal = 0;
                 break;
 
         }
+        return this.ValorIdeal;
     }
 
     public void calculaValorAposCorrecao() {
-        if (ValorParaAtingir > 0.01) {
-            ValorAposCorrecao = ValorParaAtingir;
+        if (this.ValorParaAtingir > 0.01) {
+            this.ValorAposCorrecao = this.ValorParaAtingir;
             return;
         }
-        ValorAposCorrecao = 0;
+        this.ValorAposCorrecao = 0;
     }
 
 }

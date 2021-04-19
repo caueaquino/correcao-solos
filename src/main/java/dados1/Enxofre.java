@@ -1,29 +1,28 @@
 package dados1;
 
+import enums.ETexturaSolo;
+
 public class Enxofre {
 
-    private double ValorIdeal = 9.0;
-    private int Valor;
-    private int ValorCorrigido;
+    private double Valor;
+    private double ValorIdeal;
+    private ETexturaSolo ValorTexturaDoSolo;
 
-    public Enxofre(int valor) {
-        Valor = valor;
-    }
+    public double calculaValorIdealEnxofre() {
+        switch (this.ValorTexturaDoSolo) {
+            case SOLO_ARGILOSO:
+                this.ValorIdeal = 9.0;
+                break;
 
-    public double getValorIdeal() {
-        return ValorIdeal;
-    }
+            case SOLO_TEXTURA_MEDIA:
+                this.ValorIdeal = 6.0;
+                break;
 
-    public int getValor() {
-        return Valor;
-    }
-
-    public int getValorCorrigido() {
-        return ValorCorrigido;
-    }
-
-    public void CalculaCorrecaoEnxofre() {
-
+            default:
+                this.Valor = 0;
+                break;
+        }
+        return this.ValorIdeal;
     }
 
 }
