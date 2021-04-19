@@ -41,3 +41,8 @@ Maven                            1              3              0             13
 SUM:                            18            116             22            548
 -------------------------------------------------------------------------------
 </pre>
+
+
+Apesar de ainda conter muitas estruturas condicionais ainda no código, adicionado os enums nas condições dos switchs sendo os enums bem descritivos, fica bem facil de entender a que eles se referem e o funcionamento, apesar de essas estruturas tomarem boa parte do código. 
+
+Pensei em utilizar hashmap utilizando um objeto para mapear todos os valores possiveis verificados dentro do switch porem a complexibilidade de entendimento do código seria maior em comparação com a clareza que o switch juntamente com os enums bem descritivos fornece. Por outro lado o desenpenho seria melhor e o tamanho do código menor, ja que não haveria todas aquelas comparações e com hashmap acessamos diretamente uma posição de memoria referente ao valor, não precisando fazer nenhum processamento em relação as condições do switch.
