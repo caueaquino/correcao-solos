@@ -1,13 +1,18 @@
 package dados1;
 
+import enums.EFonteCorretivoCalcioMagnesio;
+import enums.EFonteFosforo;
+import enums.ETexturaSolo;
+
+
 public class Calcio {
 
     private double Valor;
     private double ValorIdeal;
     private double ValorAposCorrecao;
     private double TeorCaOCorretivo;
-    private int FonteCorretivo;
-    private int FonteFosforoUtilizar;
+    private EFonteCorretivoCalcioMagnesio FonteCorretivo;
+    private EFonteFosforo FonteFosforoUtilizar;
     private double ParticipacaoCalcioCTCAtual;
     private double ParticipacaoCalcioCTCDesejada;
     private double ValorHAL;
@@ -16,129 +21,27 @@ public class Calcio {
     private double ValorFosforo;
     private double EficienciaFosforo;
     private double TeorFosforoAtingir;
+    private ETexturaSolo ValorTexturaDoSolo;
+    private EFonteFosforo EFonteFosforo;
+    private enums.EFonteCorretivoCalcioMagnesio EFonteCorretivoCalcioMagnesio;
 
-    public Calcio() { }
+    public double calculaValorIdeal() {
+        switch (this.ValorTexturaDoSolo) {
 
-    public double getValor() {
-        return Valor;
-    }
-
-    public double getValorIdeal() {
-        return ValorIdeal;
-    }
-
-    public double getValorAposCorrecao() {
-        return ValorAposCorrecao;
-    }
-
-    public double getTeorCaOCorretivo() {
-        return TeorCaOCorretivo;
-    }
-
-    public int getFonteCorretivo() {
-        return FonteCorretivo;
-    }
-
-    public double getFonteFosforoUtilizar() {
-        return FonteFosforoUtilizar;
-    }
-
-    public double getParticipacaoCalcioCTCAtual() {
-        return ParticipacaoCalcioCTCAtual;
-    }
-
-    public double getParticipacaoCalcioCTCDesejada() {
-        return ParticipacaoCalcioCTCDesejada;
-    }
-
-    public double getValorHAL() {
-        return ValorHAL;
-    }
-
-    public double getValorPotassio() {
-        return ValorPotassio;
-    }
-
-    public double getValorMagnesio() {
-        return ValorMagnesio;
-    }
-
-    public double getValorFosforo() {
-        return ValorFosforo;
-    }
-
-    public double getEficienciaFosforo() {
-        return EficienciaFosforo;
-    }
-
-    public double getTeorFosforoAtingir() {
-        return TeorFosforoAtingir;
-    }
-
-    public void setValor(double valor) {
-        Valor = valor;
-    }
-
-    public void setTeorCaOCorretivo(double teorCaOCorretivo) {
-        TeorCaOCorretivo = teorCaOCorretivo;
-    }
-
-    public void setFonteCorretivo(int fonteCorretivo) {
-        FonteCorretivo = fonteCorretivo;
-    }
-
-    public void setFonteFosforoUtilizar(double fonteFosforoUtilizar) {
-        FonteFosforoUtilizar = fonteFosforoUtilizar;
-    }
-
-    public void setParticipacaoCalcioCTCAtual(double participacaoCalcioCTCAtual) {
-        ParticipacaoCalcioCTCAtual = participacaoCalcioCTCAtual;
-    }
-
-    public void setParticipacaoCalcioCTCDesejada(double participacaoCalcioCTCDesejada) {
-        ParticipacaoCalcioCTCDesejada = participacaoCalcioCTCDesejada;
-    }
-
-    public void setValorHAL(double valorHAL) {
-        ValorHAL = valorHAL;
-    }
-
-    public void setValorPotassio(double valorPotassio) {
-        ValorPotassio = valorPotassio;
-    }
-
-    public void setValorMagnesio(double valorMagnesio) {
-        ValorMagnesio = valorMagnesio;
-    }
-
-    public void setValorFosforo(double valorFosforo) {
-        ValorFosforo = valorFosforo;
-    }
-
-    public void setEficienciaFosforo(double eficienciaFosforo) {
-        EficienciaFosforo = eficienciaFosforo;
-    }
-
-    public void setTeorFosforoAtingir(double teorFosforoAtingir) {
-        TeorFosforoAtingir = teorFosforoAtingir;
-    }
-
-    public void calculaValorIdeal(int texturaSolo) {
-        switch (texturaSolo) {
-
-            case 1:
-                ValorIdeal = 6.0;
+            case SOLO_ARGILOSO:
+                this.ValorIdeal = 6.0;
                 break;
 
-            case 2:
-                ValorIdeal = 4.0;
+            case SOLO_TEXTURA_MEDIA:
+                this.ValorIdeal = 4.0;
                 break;
 
             default:
-                ValorIdeal = 0;
+                this.ValorIdeal = 0;
                 break;
 
         }
+        return this.ValorIdeal;
     }
 
     //b24 = ((((diferencaMetaFosforo * 2) * 2,29) * 100 / EficienciaFosforo / 100) * 100 / kgAlqueire) * 2,42
@@ -151,26 +54,26 @@ public class Calcio {
     // am41 = =SE(D23=7;"0,92716";SE(D23=8;"0,80235";SE(D23=9;"0,49924";SE(D23=10;"0,795218";SE(D23=11;"0,0";SE(D23=12;"0,0";""))))))
 
     public void calculaValorAposCorrecao() {
-        ParticipacaoCalcioCTCAtual = Valor / (Valor + ValorPotassio + ValorMagnesio + ValorHAL) * 100;
+        this.ParticipacaoCalcioCTCAtual = this.Valor / (this.Valor + this.ValorPotassio + this.ValorMagnesio + this.ValorHAL) * 100;
 
         double diferencaMetaFosforo = this.calculaDiferencaObjetivoFosforo();
         double kgAlqueire = this.calculaKgAlqueire();
         double corretivos = this.calculaCorretivos();
-        double calculoTeorCaOCorretivoPorcentagem = ((TeorCaOCorretivo > 0.01 ? TeorCaOCorretivo : corretivos) * 0.01783);
+        double calculoTeorCaOCorretivoPorcentagem = ((this.TeorCaOCorretivo > 0.01 ? this.TeorCaOCorretivo : corretivos) * 0.01783);
 
-        double ValorCalculoAuxiliar1 = ((((diferencaMetaFosforo * 2) * 2.29) * 100 / EficienciaFosforo / 100) * 100 / kgAlqueire) * 2.42; // B24
+        double ValorCalculoAuxiliar1 = ((((diferencaMetaFosforo * 2) * 2.29) * 100 / this.EficienciaFosforo / 100) * 100 / kgAlqueire) * 2.42; // B24
         double ValorCalculoAuxiliar2 = this.calculoAuxiliar2(ValorCalculoAuxiliar1);
-        double valorCalculoAuxiliar3 = Valor + ((calculoTeorCaOCorretivoPorcentagem + ((ValorCalculoAuxiliar2 / 2.42) * ('EQUILIBRIO E CORREÇÃO NA CTC'!AM40) / 1000)) * ('EQUILIBRIO E CORREÇÃO NA CTC'!O117)) + ((ValorCalculoAuxiliar2 / 2.42) * ('EQUILIBRIO E CORREÇÃO NA CTC'!AM40) / 1000);
+        double valorCalculoAuxiliar3 = this.Valor + ((calculoTeorCaOCorretivoPorcentagem + ((ValorCalculoAuxiliar2 / 2.42) * ('EQUILIBRIO E CORREÇÃO NA CTC'!AM40) / 1000)) * ('EQUILIBRIO E CORREÇÃO NA CTC'!O117)) + ((ValorCalculoAuxiliar2 / 2.42) * ('EQUILIBRIO E CORREÇÃO NA CTC'!AM40) / 1000);
 
         if (false) {
-            ValorAposCorrecao = 0;
+            this.ValorAposCorrecao = 0;
             return;
         }
-        ValorAposCorrecao = 0;
+        this.ValorAposCorrecao = 0;
     }
 
     private double calculaDiferencaObjetivoFosforo() {
-        double valorAuxiliar = TeorFosforoAtingir - ValorFosforo;
+        double valorAuxiliar = this.TeorFosforoAtingir - this.ValorFosforo;
         if (valorAuxiliar < 0.01) {
             return 0.0;
         }
@@ -178,41 +81,41 @@ public class Calcio {
     }
 
     private double calculoAuxiliar2(double valorAuxiliar) {
-        switch (FonteFosforoUtilizar) {
-            case 1:
+        switch (this.FonteFosforoUtilizar) {
+            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 2:
+            case DAP_FONTE_FOSFORO:
                 return valorAuxiliar * 0.2;
 
-            case 3:
+            case FOSFATO_GAFSA_FONTE_FOSFORO:
                 return valorAuxiliar * 0.09;
 
-            case 4:
+            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
                 return valorAuxiliar * 0.16;
 
-            case 5:
+            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 6:
+            case YOORIN_FONTE_FOSFORO:
                 return valorAuxiliar * 0.52;
 
-            case 7:
+            case FOSFATO_DAOUI_FONTE_FOSFORO:
                 return valorAuxiliar * 0.52;
 
-            case 8:
+            case ACIDO_FOSFORICO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.45;
 
-            case 9:
+            case MAP_FONTE_FOSFORO:
                 return valorAuxiliar * 0.28;
 
-            case 10:
+            case FOSFATO_ARAD_FONTE_FOSFORO:
                 return valorAuxiliar * 0.44;
 
-            case 11:
+            case FOSFATO_PATO_MINAS_FONTE_FOSFORO:
                 return valorAuxiliar * 0;
 
-            case 12:
+            case MULTIFOSFATO_MAGNESIANO_FONTE_FOSFORO:
                 return valorAuxiliar * 0.18;
 
             default:
@@ -222,23 +125,23 @@ public class Calcio {
 
 
     private double calculaCorretivos() {
-        switch (FonteCorretivo) {
-            case 1:
+        switch (this.FonteCorretivo) {
+            case CALCARIO_DOLOMITICO_FONTE_CALCIO_MAGNESIO:
                 return 30.4;
 
-            case 2:
+            case CALCARIO_CALCITICO_FONTE_CALCIO_MAGNESIO:
                 return 56;
 
-            case 3:
+            case CALCARIO_DE_CONCHA_FONTE_CALCIO_MAGNESIO:
                 return 54;
 
-            case 4:
+            case GESSO_AGRICOLA_FONTE_CALCIO_MAGNESIO:
                 return 29;
 
-            case 5:
+            case HIDROXIDO_CALCIO_FONTE_CALCIO_MAGNESIO:
                 return 75.7;
 
-            case 6:
+            case CALCARIO_MAGNESIANO_FONTE_CALCIO_MAGNESIO:
                 return 35;
 
             default:
@@ -247,35 +150,35 @@ public class Calcio {
     }
 
     private double calculaKgAlqueire() {
-        switch (FonteFosforoUtilizar) {
-            case 1:
+        switch (this.FonteFosforoUtilizar) {
+            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
                 return 18;
 
-            case 2:
+            case DAP_FONTE_FOSFORO:
                 return 41;
 
-            case 3:
+            case FOSFATO_GAFSA_FONTE_FOSFORO:
                 return 48;
 
-            case 4:
+            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
                 return 45;
 
-            case 5:
+            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
                 return 18;
 
-            case 6:
+            case YOORIN_FONTE_FOSFORO:
                 return 33;
 
-            case 7:
+            case FOSFATO_DAOUI_FONTE_FOSFORO:
                 return 29;
 
-            case 8:
+            case ACIDO_FOSFORICO_FONTE_FOSFORO:
                 return 32;
 
-            case 9:
+            case MAP_FONTE_FOSFORO:
                 return 24;
 
-            case 10:
+            case FOSFATO_ARAD_FONTE_FOSFORO:
                 return 18.5;
 
             default:

@@ -2,28 +2,13 @@ package dados1;
 
 public class Aluminio {
 
-    private double ValorIdeal = 0.0;
-    private int Valor;
-    private int ValorCorrigido;
+    private double Valor;
+    private double ValorIdeal;
 
-    public Aluminio(int valor) {
-        Valor = valor;
-    }
-
-    public double getValorIdeal() {
-        return ValorIdeal;
-    }
-
-    public int getValor() {
-        return Valor;
-    }
-
-    public int getValorCorrigido() {
-        return ValorCorrigido;
-    }
-
-    public void CalculaCorrecaoAluminio() {
-
+    public double calculaValorIdealAluminio() {
+        //TODO - verificar valor está fixo como zero o que não faz muito sentido.(posição W11:X11)
+        this.ValorIdeal = 0;
+        return this.ValorIdeal;
     }
 
 }
