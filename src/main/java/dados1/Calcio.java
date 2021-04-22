@@ -81,109 +81,31 @@ public class Calcio {
     }
 
     private double calculoAuxiliar2(double valorAuxiliar) {
-        switch (this.FonteFosforoUtilizar) {
-            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
-                return valorAuxiliar * 0.28;
-
-            case DAP_FONTE_FOSFORO:
-                return valorAuxiliar * 0.2;
-
-            case FOSFATO_GAFSA_FONTE_FOSFORO:
-                return valorAuxiliar * 0.09;
-
-            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
-                return valorAuxiliar * 0.16;
-
-            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
-                return valorAuxiliar * 0.28;
-
-            case YOORIN_FONTE_FOSFORO:
-                return valorAuxiliar * 0.52;
-
-            case FOSFATO_DAOUI_FONTE_FOSFORO:
-                return valorAuxiliar * 0.52;
-
-            case ACIDO_FOSFORICO_FONTE_FOSFORO:
-                return valorAuxiliar * 0.45;
-
-            case MAP_FONTE_FOSFORO:
-                return valorAuxiliar * 0.28;
-
-            case FOSFATO_ARAD_FONTE_FOSFORO:
-                return valorAuxiliar * 0.44;
-
-            case FOSFATO_PATO_MINAS_FONTE_FOSFORO:
-                return valorAuxiliar * 0;
-
-            case MULTIFOSFATO_MAGNESIANO_FONTE_FOSFORO:
-                return valorAuxiliar * 0.18;
-
-            default:
-                return 0.0;
+        double[] opcoesCalculoAuxiliar = {0.28, 0.2, 0.09, 0.16, 0.28, 0.52, 0.52, 0.45, 0.28, 0.44, 0, 0.18};
+        int fonteFosforoUtilizarInteiro = Integer.parseInt(this.FonteFosforoUtilizar.toString());
+        if (fonteFosforoUtilizarInteiro > 0 && fonteFosforoUtilizarInteiro < 13) {
+            return opcoesCalculoAuxiliar[fonteFosforoUtilizarInteiro];
         }
+        return 0;
     }
 
 
     private double calculaCorretivos() {
-        switch (this.FonteCorretivo) {
-            case CALCARIO_DOLOMITICO_FONTE_CALCIO_MAGNESIO:
-                return 30.4;
-
-            case CALCARIO_CALCITICO_FONTE_CALCIO_MAGNESIO:
-                return 56;
-
-            case CALCARIO_DE_CONCHA_FONTE_CALCIO_MAGNESIO:
-                return 54;
-
-            case GESSO_AGRICOLA_FONTE_CALCIO_MAGNESIO:
-                return 29;
-
-            case HIDROXIDO_CALCIO_FONTE_CALCIO_MAGNESIO:
-                return 75.7;
-
-            case CALCARIO_MAGNESIANO_FONTE_CALCIO_MAGNESIO:
-                return 35;
-
-            default:
-                return 0;
+        double[] opcoesCalculoCorretivo = {30.4, 56, 54, 29, 75.7, 35};
+        int fonteCorretivoInteiro = Integer.parseInt(this.FonteCorretivo.toString());
+        if (fonteCorretivoInteiro > 0 && fonteCorretivoInteiro < 7) {
+            return opcoesCalculoCorretivo[fonteCorretivoInteiro];
         }
+        return 0;
     }
 
     private double calculaKgAlqueire() {
-        switch (this.FonteFosforoUtilizar) {
-            case SUPERFOSFATO_SIMPLES_FONT_FOSFORO:
-                return 18;
-
-            case DAP_FONTE_FOSFORO:
-                return 41;
-
-            case FOSFATO_GAFSA_FONTE_FOSFORO:
-                return 48;
-
-            case ESCORIA_DE_THOMAS_FONTE_FOSFORO:
-                return 45;
-
-            case SUPERFOSFATO_TRIPLO_FONTE_FOSFORO:
-                return 18;
-
-            case YOORIN_FONTE_FOSFORO:
-                return 33;
-
-            case FOSFATO_DAOUI_FONTE_FOSFORO:
-                return 29;
-
-            case ACIDO_FOSFORICO_FONTE_FOSFORO:
-                return 32;
-
-            case MAP_FONTE_FOSFORO:
-                return 24;
-
-            case FOSFATO_ARAD_FONTE_FOSFORO:
-                return 18.5;
-
-            default:
-                return 0;
+        double[] opcoesCalculoKgAlqueire = {18, 41, 48, 45, 18, 33, 29, 32, 24, 18.5};
+        int fonteFosoforoUtilizarInteiro = Integer.parseInt(this.FonteFosforoUtilizar.toString());
+        if (fonteFosoforoUtilizarInteiro > 0 && fonteFosoforoUtilizarInteiro < 11) {
+            return opcoesCalculoKgAlqueire[fonteFosoforoUtilizarInteiro];
         }
+        return 0;
     }
 
 }
