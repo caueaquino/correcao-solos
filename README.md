@@ -46,3 +46,41 @@ SUM:                            18            116             22            548
 Apesar de ainda conter muitas estruturas condicionais ainda no código, adicionado os enums nas condições dos switchs sendo os enums bem descritivos, fica bem facil de entender a que eles se referem e o funcionamento, apesar de essas estruturas tomarem boa parte do código. 
 
 Pensei em utilizar hashmap utilizando um objeto para mapear todos os valores possiveis verificados dentro do switch, porém a complexibilidade de entendimento do código seria maior em comparação com a clareza que o switch juntamente com os enums bem descritivos fornece. Por outro lado o desenpenho seria melhor e o tamanho do código menor, ja que não haveria todas aquelas comparações e com hashmap acessamos diretamente uma posição de memoria referente ao valor, não precisando fazer nenhum processamento em relação as condições do switch.
+
+
+##Análise do CLOC apenas pasta de código criado anteriormente a alteração
+
+<pre>
+       7 text files.
+       7 unique files.
+       3 files ignored.
+
+github.com/AlDanial/cloc v 1.88  T=0.13 s (52.1 files/s, 3806.1 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                             7            135              8            368
+-------------------------------------------------------------------------------
+SUM:                             7            135              8            368
+-------------------------------------------------------------------------------
+PS C:\Users\cauen\projects\correcao-solos\src\main>
+</pre>
+
+
+
+##Análise do CLOC apenas pasta de código criado anteriormente a alteração
+
+<pre>
+      10 text files.
+      10 unique files.
+       3 files ignored.
+
+github.com/AlDanial/cloc v 1.88  T=0.10 s (100.2 files/s, 4748.7 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                            10            111             22            341
+-------------------------------------------------------------------------------
+SUM:                            10            111             22            341
+-------------------------------------------------------------------------------
+</pre>
